@@ -1,1 +1,1 @@
-// Code goes here!
+console.log(3);
