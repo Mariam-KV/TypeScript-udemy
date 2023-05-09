@@ -1,3 +1,4 @@
+"use strict";
 function strip(x) {
     if (typeof x === "number") {
         return x + 5;
@@ -28,4 +29,3 @@ let response = new MyResponse();
 let error = new MyError();
 console.log(handle(response));
 console.log(handle(error));
-//# sourceMappingURL=guards.js.map

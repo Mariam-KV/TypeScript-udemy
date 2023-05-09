@@ -1,4 +1,3 @@
-"use strict";
 class Department {
     constructor(name, id) {
         this.name = name;
@@ -20,28 +19,29 @@ class Department {
         this.employees.push(emp);
     }
     printEmployees() {
-        console.log(this.employees);
     }
 }
 let accounting = new Department("accounting", "1");
 accounting.addEmployee("Mari");
 accounting.addEmployee("Koka");
 accounting.printEmployees();
-console.log(accounting.describe());
-console.log(accounting.getName);
-accounting.setName = "hello";
-console.log(accounting.getName);
-class ItDepartment extends Department {
-    constructor(admin) {
-        super("IT", "2");
+class ItDepartment {
+    constructor(admin, name, id) {
         this.admin = admin;
+        this.name = name;
+        this.id = id;
         this.admin = admin;
+        this.name = name;
+        this.id = id;
     }
-    describe() {
-        return "it " + this.name;
+    get describe() {
+        return (this.id = "gfgfg");
+    }
+    de() {
+        return (this.id = "id");
     }
 }
-let it = new ItDepartment(["Mari"]);
-it.addEmployee("Mari");
-console.log(it.describe());
-//# sourceMappingURL=classes.js.map
+let g = new ItDepartment(["me"], "me", "dgffh");
+console.log(g.describe);
+console.log(g.de());
+console.log(g);

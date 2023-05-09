@@ -10,7 +10,6 @@ function add(a, b) {
     }
     return a + b;
 }
-console.log(add(4, 7));
-let result = add("g", "f");
-result.split(" ");
-//# sourceMappingURL=intersection-overload.js.map
+console.log(add(4, "g"));
+let d = undefined !== null && undefined !== void 0 ? undefined : "g";
+console.log(d);

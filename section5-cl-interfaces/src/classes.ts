@@ -20,29 +20,41 @@ class Department {
     this.employees.push(emp);
   }
   printEmployees() {
-    console.log(this.employees);
+    // console.log(this.employees);
   }
 }
 let accounting = new Department("accounting", "1");
 accounting.addEmployee("Mari");
 accounting.addEmployee("Koka");
 accounting.printEmployees();
-console.log(accounting.describe());
-//let copy = { name: "dummy", describe: accounting.describe };
-//console.log(copy.describe());
-console.log(accounting.getName);
-accounting.setName = "hello";
-console.log(accounting.getName);
-class ItDepartment extends Department {
+// console.log(accounting.describe());
+
+// console.log(accounting.getName);
+// accounting.setName = "hello";
+// console.log(accounting.getName);
+class ItDepartment {
   // we must use private/public if we initialize directly in a constructor
-  constructor(public admin: string[]) {
-    super("IT", "2");
+
+  constructor(
+    public admin: string[],
+    public name: string,
+    protected id: string
+  ) {
     this.admin = admin;
+    this.name = name;
+    this.id = id;
   }
-  describe() {
-    return "it " + this.name;
+  get describe() {
+    return (this.id = "gfgfg");
+  }
+  de() {
+    return (this.id = "id");
   }
 }
-let it = new ItDepartment(["Mari"]);
-it.addEmployee("Mari");
-console.log(it.describe());
+
+let g = new ItDepartment(["me"], "me", "dgffh");
+// g.id = "dfd";
+
+console.log(g.describe);
+console.log(g.de());
+console.log(g);

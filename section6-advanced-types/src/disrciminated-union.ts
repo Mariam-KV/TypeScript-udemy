@@ -17,7 +17,11 @@ function moveAnimal(animal: Animal) {
       break;
     case "horse":
       speed = animal.runningSpeed;
+      break;
   }
   console.log("Moving at speed: " + speed);
 }
 moveAnimal({ type: "bird", flyingSpeed: 45 });
+
+
+

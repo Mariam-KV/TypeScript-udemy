@@ -1,3 +1,4 @@
+"use strict";
 class TS {
     // if we don't write type of modifecators --> we must write aside
     // version:string
@@ -45,4 +46,3 @@ let d = new AppComponent();
 console.log(d);
 console.log(d.info());
 console.log(d.render());
-//# sourceMappingURL=classes.js.map

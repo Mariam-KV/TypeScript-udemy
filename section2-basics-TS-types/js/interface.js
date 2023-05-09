@@ -1,3 +1,4 @@
+"use strict";
 let rect1 = {
     id: "ff",
     size: {
@@ -14,4 +15,3 @@ class rect3 {
 }
 let g = new rect3("dsf", { width: 4, height: 4 });
 console.log(g);
-//# sourceMappingURL=interface.js.map

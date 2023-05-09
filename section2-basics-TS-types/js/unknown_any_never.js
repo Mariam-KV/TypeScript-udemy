@@ -1,3 +1,4 @@
+"use strict";
 //unknown
 let num;
 num = 3;
@@ -16,4 +17,3 @@ function generateError(message) {
     throw message;
 }
 console.log(generateError("occur an error"));
-//# sourceMappingURL=unknown_any_never.js.map

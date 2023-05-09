@@ -1,3 +1,4 @@
+"use strict";
 //Tuple  →A tuple is a typed array with a predefined length and types for each index.
 let tuple = [12, "admsf", true];
 console.log((tuple[0] = 3));
@@ -24,4 +25,3 @@ function combine(a, b) {
 }
 console.log(combine(3, 5));
 console.log(combine("2", 4));
-//# sourceMappingURL=union-aliases.js.map

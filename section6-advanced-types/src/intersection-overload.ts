@@ -1,3 +1,5 @@
+//intersection
+
 type Admin = {
   name: string;
   age: number;
@@ -5,17 +7,18 @@ type Admin = {
 type Employee = {
   prof: string[];
 };
-type ME = Admin & Employee;
-let i: ME = {
+type Intersection = Admin & Employee;
+let i: Intersection = {
   name: "Mariam",
   age: 23,
   prof: ["front", "end"],
 };
 
-type Combinable = string | number;
 type Numeric = number | boolean;
 type Universal = Combinable & Numeric;
+
 //overload functions
+type Combinable = string | number;
 function add(a: number, b: number): number;
 function add(a: string, b: string): string;
 function add(a: string, b: number): string;
@@ -26,7 +29,7 @@ function add(a: Combinable, b: Combinable) {
   }
   return a + b;
 }
-console.log(add(4, 7));
-//let result = <string>add("g", "f");
-let result = add("g", "f");
-result.split(" ");
+console.log(add(4, "g"));
+
+let d = undefined ?? "g";
+console.log(d);

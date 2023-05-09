@@ -1,3 +1,4 @@
+"use strict";
 function add(n1, n2) {
     return n1 + n2;
 }
@@ -29,4 +30,3 @@ function position(a, b) {
 console.log(position());
 console.log(position("Tbilisi"));
 console.log(position("Mari", 23));
-//# sourceMappingURL=functions.js.map
