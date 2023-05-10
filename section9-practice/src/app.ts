@@ -1,55 +1,70 @@
-class ProjectInput {
-  templateElement;
-  wherePutElement;
-  element: HTMLElement;
-  titleInputELement: HTMLInputElement;
-  descriptionInputELement: HTMLInputElement;
-  numberInputELement: HTMLInputElement;
-  constructor() {
-    this.templateElement = document.getElementById(
-      "project-input"
-    ) as HTMLTemplateElement;
-    this.wherePutElement = document.getElementById("app") as HTMLDivElement;
+/// <reference path="projectList.ts"/>
+/// <reference path="project-status.ts"/>
+/// <reference path="componentBase.ts"/>
+let projectState = new ProjectState();
+namespace App {
+  class ProjectInput {
+    templateElement;
+    wherePutElement;
+    element: HTMLElement;
+    titleInputELement: HTMLInputElement;
+    descriptionInputELement: HTMLInputElement;
+    numberInputELement: HTMLInputElement;
+    constructor() {
+      this.templateElement = document.getElementById(
+        "project-input"
+      ) as HTMLTemplateElement;
+      this.wherePutElement = document.getElementById("app") as HTMLDivElement;
 
-    let importNode = document.importNode(this.templateElement.content, true);
-    this.element = importNode.firstElementChild! as HTMLFormElement;
-    this.element.id = "user-input";
-    this.titleInputELement = this.element.querySelector("#title")!;
-    this.descriptionInputELement = this.element.querySelector("#description")!;
-    this.numberInputELement = this.element.querySelector("#people")!;
-    this.attach();
-    this.configure();
-  }
-  gatherUserInput(): [string, string, number] | void {
-    let title = this.titleInputELement.value;
-    let description = this.descriptionInputELement.value;
-    let number = this.numberInputELement.value;
-    if (
-      title.trim().length > 0 &&
-      description.trim().length > 0 &&
-      number.trim().length > 0
-    ) {
-      return [title, description, +number];
+      let importNode = document.importNode(this.templateElement.content, true);
+      this.element = importNode.firstElementChild! as HTMLFormElement;
+      this.element.id = "user-input";
+      this.titleInputELement = this.element.querySelector("#title")!;
+      this.descriptionInputELement =
+        this.element.querySelector("#description")!;
+      this.numberInputELement = this.element.querySelector("#people")!;
+      this.attach();
+      this.configure();
     }
-    return;
-  }
-  handleSubmit(event: Event) {
-    2;
-    event.preventDefault();
-    let inputResult = this.gatherUserInput();
-    if (inputResult) {
-      this.titleInputELement.value = "";
-      this.descriptionInputELement.value = "";
-      this.numberInputELement.value = "";
-      alert("form submitted");
+    gatherUserInput(): [string, string, number] | void {
+      let title = this.titleInputELement.value;
+      let description = this.descriptionInputELement.value;
+      let number = this.numberInputELement.value;
+      if (
+        title.trim().length > 0 &&
+        description.trim().length > 0 &&
+        number.trim().length > 0
+      ) {
+        return [title, description, +number];
+      }
+      return;
     }
-    console.log(inputResult);
+    handleSubmit(event: Event) {
+      2;
+      event.preventDefault();
+      let inputResult = this.gatherUserInput();
+      if (inputResult) {
+        projectState.addProject(
+          this.titleInputELement.value,
+          this.descriptionInputELement.value,
+          +this.numberInputELement.value,
+          "active"
+        );
+
+        this.titleInputELement.value = "";
+        this.descriptionInputELement.value = "";
+        this.numberInputELement.value = "";
+        alert("form submitted");
+      }
+    }
+    configure() {
+      this.element.addEventListener("submit", this.handleSubmit.bind(this));
+    }
+    attach() {
+      this.wherePutElement.insertAdjacentElement("afterbegin", this.element);
+    }
   }
-  configure() {
-    this.element.addEventListener("submit", this.handleSubmit.bind(this));
-  }
-  attach() {
-    this.wherePutElement.insertAdjacentElement("afterbegin", this.element);
-  }
+  new ProjectInput();
+  new ProjectList("active");
+  new ProjectList("finished");
 }
-new ProjectInput();
