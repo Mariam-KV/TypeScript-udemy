@@ -2,7 +2,7 @@
 //project stete managment class
 //Project State Management
 
-class ProjectState {
+export class ProjectState {
   projects: any[] = [];
   listeners: any[] = [];
 
@@ -44,3 +44,5 @@ class ProjectState {
     }
   }
 }
+let projectState = new ProjectState();
+export default projectState;
