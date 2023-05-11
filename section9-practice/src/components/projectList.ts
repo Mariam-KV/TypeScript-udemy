@@ -1,6 +1,6 @@
-import projectState from "../state/projectState.js";
-import * as D from "../models/drag-drop-interfaces.js";
-import  ProjectItem  from "./projectItem.js";
+import projectState from "../state/projectState";
+import * as D from "../models/drag-drop-interfaces";
+import  ProjectItem  from "./projectItem";
 export default class ProjectList implements D.DragTarget {
   templateElement;
   wherePutElement;

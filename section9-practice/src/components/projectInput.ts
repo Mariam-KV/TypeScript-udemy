@@ -1,4 +1,4 @@
-import projectState from "../state/projectState.js";
+import projectState from "../state/projectState";
 export default class ProjectInput {
   templateElement;
   wherePutElement;

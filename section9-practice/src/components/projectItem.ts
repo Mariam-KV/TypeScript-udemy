@@ -1,4 +1,4 @@
-import * as D from "../models/drag-drop-interfaces.js";
+import * as D from "../models/drag-drop-interfaces";
 export default class ProjectItem implements D.Draggable {
   listItem;
   constructor(public project: any, public list: HTMLElement) {
