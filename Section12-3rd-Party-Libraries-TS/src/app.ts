@@ -1,0 +1,10 @@
+import Transformer from "./class-transformer";
+import declareVariables from "./declareVariables";
+import LodashFn from "./lodash";
+import Validation from "./validation";
+Transformer();
+console.log("--------------------------------");
+declareVariables();
+console.log("--------------------------------");
+LodashFn();
+Validation();
