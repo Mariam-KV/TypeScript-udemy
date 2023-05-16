@@ -41,15 +41,12 @@ export default class ProjectInput {
       projectState.addProject(
         this.titleInputELement.value,
         this.descriptionInputELement.value,
-        +this.numberInputELement.value,
-        "active"
+        +this.numberInputELement.value
       );
-
       this.titleInputELement.value = "";
       this.descriptionInputELement.value = "";
       this.numberInputELement.value = "";
-      alert("form submitted");
-    }
+    } else alert("Data is not correct!");
   }
   configure() {
     this.element.addEventListener("submit", this.handleSubmit.bind(this));

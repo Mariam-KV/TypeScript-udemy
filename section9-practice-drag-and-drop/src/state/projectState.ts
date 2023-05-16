@@ -1,23 +1,18 @@
 //build a class which manages the state of our application
 //project stete managment class
 //Project State Management
-
+import { ProjectStatus } from "../components/project-status";
 export class ProjectState {
   projects: any[] = [];
   listeners: any[] = [];
 
-  addProject(
-    title: string,
-    description: string,
-    people: number,
-    status: "active" | "finished"
-  ) {
+  addProject(title: string, description: string, people: number) {
     let newProject: any = {
       title,
       description,
       people,
       id: Math.random(),
-      status,
+      status: ProjectStatus.Active,
     };
 
     for (let listenerFn of this.listeners) {
@@ -30,8 +25,8 @@ export class ProjectState {
   addListener(listenerFn: Function) {
     this.listeners.push(listenerFn);
   }
-  moveProject(projectId: string, st: string) {
-    let project = this.projects.find((el) => el.id == projectId);
+  moveProject(projectId: string, st: ProjectStatus) {
+    let project = this.projects.find((el) => "" + el.id === projectId);
     if (project && project.status !== st) {
       project.status = st;
       this.updateListeners();

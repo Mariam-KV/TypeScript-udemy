@@ -14,7 +14,7 @@ export default class ProjectItem implements D.Draggable {
     this.listItem.appendChild(h2);
     this.listItem.appendChild(h3);
     this.listItem.appendChild(p);
-
+    this.listItem.id = "" + project.id;
     list?.appendChild(this.listItem);
     this.configure();
   }
@@ -23,7 +23,7 @@ export default class ProjectItem implements D.Draggable {
     return `${num} persons`;
   }
   dragStartHandler(event: DragEvent) {
-    event.dataTransfer!.setData("text/plain", this.project.id);
+    event.dataTransfer!.setData("text/plain", "" + this.project.id);
     event.dataTransfer!.effectAllowed = "move";
   }
   dragEndHandler(_: DragEvent) {}
