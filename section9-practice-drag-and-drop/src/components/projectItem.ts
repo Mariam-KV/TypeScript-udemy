@@ -1,4 +1,5 @@
 import * as D from "../models/drag-drop-interfaces";
+import autobind from "./autobind";
 export default class ProjectItem implements D.Draggable {
   listItem;
   constructor(public project: any, public list: HTMLElement) {
@@ -22,16 +23,16 @@ export default class ProjectItem implements D.Draggable {
     if (num === 1) return "1 person";
     return `${num} persons`;
   }
+  @autobind
   dragStartHandler(event: DragEvent) {
     event.dataTransfer!.setData("text/plain", "" + this.project.id);
     event.dataTransfer!.effectAllowed = "move";
   }
+  @autobind
   dragEndHandler(_: DragEvent) {}
+
   configure() {
-    this.listItem.addEventListener(
-      "dragstart",
-      this.dragStartHandler.bind(this)
-    );
-    this.listItem.addEventListener("dragend", this.dragEndHandler.bind(this));
+    this.listItem.addEventListener("dragstart", this.dragStartHandler);
+    this.listItem.addEventListener("dragend", this.dragEndHandler);
   }
 }

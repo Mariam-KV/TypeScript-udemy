@@ -9,13 +9,18 @@ function Log3(target: any, propertyName: string, position: number) {
 }
 
 class Product {
+  //decorator to a property
   @Log
   title: string;
   constructor(title: string) {
     this.title = title;
   }
+  //decorator to a method
   @Log2
-  change(@Log3 str: string) {
+  change(
+    //decorator to a parameter
+    @Log3 str: string
+  ) {
     this.title = str;
   }
 }

@@ -2,6 +2,7 @@ import projectState from "../state/projectState";
 import * as D from "../models/drag-drop-interfaces";
 import ProjectItem from "./projectItem";
 import { ProjectStatus } from "./project-status";
+import autobind from "./autobind";
 export default class ProjectList implements D.DragTarget {
   templateElement;
   wherePutElement;
@@ -35,9 +36,9 @@ export default class ProjectList implements D.DragTarget {
     this.renderContent();
     this.attach();
     this.list = document.getElementById(`${this.type}-projects-list`)!;
-    this.list.addEventListener("dragleave", this.dragLeaveHandler.bind(this));
-    this.list.addEventListener("dragover", this.dragOverHandler.bind(this));
-    this.list.addEventListener("drop", this.dropHandler.bind(this));
+    this.list.addEventListener("dragleave", this.dragLeaveHandler);
+    this.list.addEventListener("dragover", this.dragOverHandler);
+    this.list.addEventListener("drop", this.dropHandler);
   }
   renderProjects() {
     this.list.innerHTML = "";
@@ -48,13 +49,14 @@ export default class ProjectList implements D.DragTarget {
   attach() {
     this.wherePutElement.insertAdjacentElement("beforeend", this.element);
   }
-
+  @autobind
   dragOverHandler(event: DragEvent) {
     if (event.dataTransfer && event.dataTransfer.types[0] === "text/plain") {
       event.preventDefault();
       this.list?.classList.add("droppable");
     }
   }
+  @autobind
   dropHandler(event: DragEvent) {
     let projectId = event.dataTransfer?.getData("text/plain")!;
 
@@ -63,6 +65,7 @@ export default class ProjectList implements D.DragTarget {
       this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished
     );
   }
+  @autobind
   dragLeaveHandler(_: DragEvent) {
     this.list.classList.remove("droppable");
   }

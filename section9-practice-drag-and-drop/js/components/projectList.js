@@ -1,6 +1,13 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 import projectState from "../state/projectState";
 import ProjectItem from "./projectItem";
 import { ProjectStatus } from "./project-status";
+import autobind from "./autobind";
 export default class ProjectList {
     constructor(type) {
         this.type = type;
@@ -24,9 +31,9 @@ export default class ProjectList {
         this.renderContent();
         this.attach();
         this.list = document.getElementById(`${this.type}-projects-list`);
-        this.list.addEventListener("dragleave", this.dragLeaveHandler.bind(this));
-        this.list.addEventListener("dragover", this.dragOverHandler.bind(this));
-        this.list.addEventListener("drop", this.dropHandler.bind(this));
+        this.list.addEventListener("dragleave", this.dragLeaveHandler);
+        this.list.addEventListener("dragover", this.dragOverHandler);
+        this.list.addEventListener("drop", this.dropHandler);
     }
     renderProjects() {
         this.list.innerHTML = "";
@@ -58,4 +65,13 @@ export default class ProjectList {
         this.element.querySelector("h2").innerText = `${this.type.toLocaleUpperCase()} PROJECTS`;
     }
 }
+__decorate([
+    autobind
+], ProjectList.prototype, "dragOverHandler", null);
+__decorate([
+    autobind
+], ProjectList.prototype, "dropHandler", null);
+__decorate([
+    autobind
+], ProjectList.prototype, "dragLeaveHandler", null);
 //# sourceMappingURL=projectList.js.map

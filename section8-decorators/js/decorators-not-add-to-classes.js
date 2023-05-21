@@ -21,6 +21,7 @@ class Product {
     constructor(title) {
         this.title = title;
     }
+    //decorator to a method
     change(str) {
         this.title = str;
     }

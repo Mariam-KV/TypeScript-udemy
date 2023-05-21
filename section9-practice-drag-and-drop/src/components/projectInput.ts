@@ -1,4 +1,5 @@
 import projectState from "../state/projectState";
+import autobind from "./autobind";
 export default class ProjectInput {
   templateElement;
   wherePutElement;
@@ -34,6 +35,7 @@ export default class ProjectInput {
     }
     return;
   }
+  @autobind
   handleSubmit(event: Event) {
     event.preventDefault();
     let inputResult = this.gatherUserInput();
@@ -48,8 +50,9 @@ export default class ProjectInput {
       this.numberInputELement.value = "";
     } else alert("Data is not correct!");
   }
+
   configure() {
-    this.element.addEventListener("submit", this.handleSubmit.bind(this));
+    this.element.addEventListener("submit", this.handleSubmit);
   }
   attach() {
     this.wherePutElement.insertAdjacentElement("afterbegin", this.element);
